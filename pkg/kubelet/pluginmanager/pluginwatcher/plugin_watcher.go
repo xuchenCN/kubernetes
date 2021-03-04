@@ -54,6 +54,7 @@ func (w *Watcher) Start(stopCh <-chan struct{}) error {
 	// Creating the directory to be watched if it doesn't exist yet,
 	// and walks through the directory to discover the existing plugins.
 	if err := w.init(); err != nil {
+		klog.Errorf("failed to init plugin socket path %q, err: %v", w.path, err)
 		return err
 	}
 
